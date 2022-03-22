@@ -1,0 +1,89 @@
+body {
+	color: #3a3434;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
+.display-block {
+    display: block;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.float-right {
+ float: right;
+ }
+ 
+ .float-left {
+ float: left;
+ }
+ 
+ .button {
+	background: #cccccc75;
+	padding: 7px;
+	text-decoration: none;
+	border-radius: 4px;
+	outline: 1px solid #b9b0b0; 
+ }
+ 
+ .button:hover {
+ 	background: #ececec;
+ }
+table {
+    text-align: left;
+    border-collapse: collapse;
+    margin: 0 0 1em 0;
+    caption-side: top;
+}
+
+caption, td, th {
+    padding: 0.3em;
+}
+
+th, td {
+    border-bottom: 1px solid #d0d0d0e6;
+    width: 25%;
+}
+
+caption {
+    font-weight: bold;
+    font-style: italic;
+} 
+
+table tbody tr:hover {
+    background: #cccccc36;
+}     
+
+.color_red {
+    color: red;
+}
+
+legend {
+    padding: 5px;
+    border-radius: 10px;
+    background: #d1f5f5;
+  }
+  
+input[type=text],input[type=email]{
+	width: 20vw;
+	margin-top: 10px;
+	padding: 6px;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+a:visited {
+    color: blue;
+}
+a:hover {
+    text-decoration: underline;
+}
