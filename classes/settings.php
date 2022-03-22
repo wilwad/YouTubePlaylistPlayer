@@ -18,11 +18,11 @@ class settings {
         public $tables_joined   = 'clientscontacts';
 
          // errors
-        public $error_noclients = "No client(s) found";
-        public $error_nocontacts= "No contact(s) found";
-        public $error_nolinkedcontacts= "No contacts found";
+        public $error_noclients         = "No client(s) found";
+        public $error_nocontacts        = "No contact(s) found";
+        public $error_nolinkedcontacts  = "No contacts found";
         public $error_nolinkablecontacts= "No contacts found that can be linked to this client.";
-        public $error_duplicatelink = "The contact specified is already linked to this client.";
+        public $error_duplicatelink     = "The contact specified is already linked to this client.";
 
 		// buttons
         public $buttons_clients    = "<a href='?view=clients'>All Clients</a>";
@@ -35,9 +35,9 @@ class settings {
 		public $html_author         = "<small class='float-right'>Create by AJN IT Solutions</small>";   
 		public $html_clients_title  = "<h1 class='align-center'>All Clients</h1>";
 		public $html_contacts_title = "<h1 class='align-center'>All Contacts</h1>";
-        public $html_hr = '<HR>';
-        public $html_slash = ' / ';
-        public $html_p  = '<p></p>';  
+        public $html_hr             = '<HR>';
+        public $html_slash          = ' / ';
+        public $html_p              = '<p></p>';  
         
         // actions
         public $html_actions_clients = "<a href='?view=clients&action=edit&id={clientid}'>Edit</a> 

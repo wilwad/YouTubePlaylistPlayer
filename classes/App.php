@@ -8,12 +8,12 @@
     
     // class constructor 
     public function __construct($appsettings){
-            $this->crud = new CRUD($appsettings->database_host, 
+            $this->crud = new CRUD( $appsettings->database_host, 
                                     $appsettings->database_user, 
                                     $appsettings->database_pwd, 
-                                    $appsettings->database_name);
+                                    $appsettings->database_name );
                                     
-                $this->settings = $appsettings;
+            $this->settings = $appsettings;
     }
     
     // handling contacts
@@ -54,8 +54,8 @@
             // get existing client codes: race condition: if the client codes are updated in the database
             // after this SELECT statement returns (during SQL INSERT), that client code will not be here
             $table = $this->settings->tables_clients;
-            $sql = "SELECT `client_code` FROM `$table`;";
-            $ret = $this->crud->readSQL($sql);
+            $sql   = "SELECT `client_code` FROM `$table`;";
+            $ret   = $this->crud->readSQL($sql);
             if ($ret['ok']){
                 $rows = $ret['data']['rows'];
                 foreach($rows as $row){
@@ -83,9 +83,9 @@
         possibility of a race condition in a multi-user environment 
     */   
     public function generateClientCode($clientname){
-            $clientname  = trim($clientname);
+            $clientname   = trim($clientname);
             $clientlength = strlen($clientname);
-            $clientname  = strtoupper($clientname); // uppercase
+            $clientname   = strtoupper($clientname); // uppercase
 			$existingclientcodes = $this->getExistingClientCodes();
              
             if ($clientlength == 1) throw new Exception("Error: Client name length == 1");
