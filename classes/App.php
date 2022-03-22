@@ -50,11 +50,9 @@
             $sql = "SELECT `client_code` FROM `$table`;";
             $ret = $this->crud->readSQL($sql);
             if ($ret['ok']){
-                $rows    = $ret['data']['rows'];
-                $maxrows = $ret['data']['total_rows'];
-                
-                for($idx=0; $idx < $maxrows; $idx++){
-                    $existingclientcodes[] = $rows[$idx]['client_code'];
+                $rows = $ret['data']['rows'];
+                foreach($rows as $row){
+                    $existingclientcodes[] = $row['client_code'];
                 }  
             }            
             return $existingclientcodes;
