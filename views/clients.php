@@ -142,9 +142,7 @@ if (isset($_POST['edit'])){
                 echo $settings->html_p;
             }
 
-            $sql = $settings->sql_getcontactsforclient;
-            $sql = str_replace('{clientid}', $actionid, $sql);            
-            $result = $app->crud->readSQL($sql);
+            $result = $app->getContactsLinkedToClient($actionid);
             if ( !$result['ok'] ){
                  echo $settings->error_nolinkedcontacts;
                  

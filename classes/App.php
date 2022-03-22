@@ -35,9 +35,16 @@
     public function removeLink($linkid){
             return $this->crud->delete($this->settings->tables_joined, 'ccid', $linkid);
     }      
-    public function getLinkedContactsForClient($clientid){
-            return $this->crud->read($this->settings->tables_clients, 'client_id', $clientid);
+    public function getContactsLinkedToClient($clientid){
+            $sql = $this->settings->sql_getcontactsforclient;
+            $sql = str_replace('{clientid}', $clientid, $sql);               
+            return $this->crud->readSQL($sql);
     }
+    public function getClientsLinkedToContact($contactid){
+            $sql = $this->settings->sql_getclientsforcontact;
+            $sql = str_replace('{contactid}', $contactid, $sql);               
+            return $this->crud->readSQL($sql);
+    }    
     public function getUnlinkedContactsForClient($clientid){
             $sql = str_replace('{clientid}', $clientid, $this->settings->sql_getcontactsnotlinkedtoclient);            
             return $this->crud->readSQL($sql);   

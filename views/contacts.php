@@ -152,9 +152,43 @@ if (isset($_POST['edit'])){
                         </table>
                        </fieldset>
                       </form>
-                      <p>&nbsp;</p>
+                      <!--p>&nbsp;</p-->
                       ";
         
+                echo "<p class='text-underline'>Clients linked to this contact</p>";
+
+                $result = $app->getClientsLinkedToContact($actionid);
+                if ( !$result['ok'] ){
+                     echo $settings->error_noclients;
+                     if ($result['error']) echo $result['error'];
+                } else {
+    
+                    $cols = $result['data']['cols'];
+                    $rows = $result['data']['rows'];
+                    $th = ''; $td = '';
+    
+                    foreach($cols as $col){
+                        if ($col == 'client_id') continue;
+                        $th .= "<th>$col</th>";
+                    }
+                
+                    foreach($rows as $row){
+                        $td .= "<tr>";
+                        foreach($cols as $col){
+                            if ($col == 'client_id') continue;
+                            $val = $row[$col];
+                            if ($col == 'Full Name') $val = "$icon_person $val";
+                            $td .= "<td>$val</td>";
+                        }       
+                        $td .= "</tr>";
+                    }    
+                    echo "<table>";
+                    echo "<thead><tr>$th</tr></thead>";
+                    echo "<tbody>$td</tbody>";
+                    echo "</table>";
+    
+                } 
+
             } else {
                 if ($ret['error']) echo 'Error: ' . $ret['error'];
             }    

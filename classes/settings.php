@@ -125,5 +125,16 @@ class settings {
 											WHERE 
 											     cc.client_id={clientid} 
 											AND 
-											     cc.contact_id = c.contact_id;";            
+											     cc.contact_id = c.contact_id;";       
+												 
+		public $sql_getclientsforcontact = "SELECT 
+												 c.client_id, 
+												 c.name As `Client Name`
+											 FROM 
+												  clients c, 
+												  clientscontacts cc 
+											 WHERE 
+												  cc.client_id=c.client_id
+											 AND 
+												  cc.contact_id = {contactid};";       												 
  }

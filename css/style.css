@@ -18,13 +18,17 @@ body {
 }
 
 .float-right {
- float: right;
+    float: right;
  }
  
  .float-left {
- float: left;
+    float: left;
  }
  
+ .text-underline {
+    text-decoration: underline;
+ }
+
  .button {
 	background: #cccccc75;
 	padding: 7px;
