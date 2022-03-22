@@ -45,6 +45,7 @@
           break;
 			
         default:
+          // default or when no view is set
           require('views/clients.php');
     }
    ?>
