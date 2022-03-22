@@ -31,7 +31,7 @@
     echo $settings->html_slash;
     echo $settings->buttons_contacts;
     
-    echo $settings->text_author;
+    echo $settings->html_author;
     echo $settings->html_hr;    
 
     /* using @ in case these parameters are not set */

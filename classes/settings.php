@@ -3,8 +3,7 @@
  * class to hold configuration data for the project
 */
 class settings {
-        public $title          = 'Clients App OOP';
-        public $text_author    = "<small class='float-right'>Create by AJN IT Solutions</small>";        
+        public $title          = 'Clients App OOP';     
         public $showPHPerrors  = true;
         
         // database connection
@@ -32,8 +31,9 @@ class settings {
         public $buttons_newclient  = "<a href='?view=clients&action=add' class='button'>+ Add new Client</a><BR>";
         public $buttons_newcontact = "<a href='?view=contacts&action=add' class='button'>+ Add new Contact</a><BR>";
     		
-		// HTML
-		public $html_clients_title = "<h1 class='align-center'>All Clients</h1>";
+		// HTML 
+		public $html_author         = "<small class='float-right'>Create by AJN IT Solutions</small>";   
+		public $html_clients_title  = "<h1 class='align-center'>All Clients</h1>";
 		public $html_contacts_title = "<h1 class='align-center'>All Contacts</h1>";
         public $html_hr = '<HR>';
         public $html_slash = ' / ';
