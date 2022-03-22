@@ -195,7 +195,7 @@ if (isset($_POST['edit'])){
             }
 
             // show all contacts not linked to this client
-            $result = $app->getUnlinkedContactsForClient($actionid);
+            $result = $app->getContactsNotLinkedToClient($actionid);
             if (!$result['ok']){
                 echo $settings->error_nolinkablecontacts;
                     

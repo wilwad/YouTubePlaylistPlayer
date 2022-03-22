@@ -40,15 +40,15 @@
             $sql = str_replace('{clientid}', $clientid, $sql);               
             return $this->crud->readSQL($sql);
     }
+    public function getContactsNotLinkedToClient($clientid){
+        $sql = str_replace('{clientid}', $clientid, $this->settings->sql_getcontactsnotlinkedtoclient);            
+        return $this->crud->readSQL($sql);   
+    }
     public function getClientsLinkedToContact($contactid){
             $sql = $this->settings->sql_getclientsforcontact;
             $sql = str_replace('{contactid}', $contactid, $sql);               
             return $this->crud->readSQL($sql);
     }    
-    public function getUnlinkedContactsForClient($clientid){
-            $sql = str_replace('{clientid}', $clientid, $this->settings->sql_getcontactsnotlinkedtoclient);            
-            return $this->crud->readSQL($sql);   
-    }
     public function getExistingClientCodes(){
             $existingclientcodes = [];
             // get existing client codes: race condition: if the client codes are updated in the database
