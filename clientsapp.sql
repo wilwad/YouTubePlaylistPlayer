@@ -1,5 +1,5 @@
 -- -----------------------------------------------------
--- Table `clientapp`.`clients`
+-- Table `clientsapp`.`clients`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `clients` (
   `client_id` INT NOT NULL AUTO_INCREMENT,
@@ -13,7 +13,7 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `clientapp`.`contacts`
+-- Table `clientsapp`.`contacts`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `contacts` (
   `contact_id` INT NOT NULL AUTO_INCREMENT,
@@ -27,7 +27,7 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
--- Table `clientapp`.`clientscontacts`
+-- Table `clientsapp`.`clientscontacts`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `clientscontacts` (
   `ccid` INT NOT NULL AUTO_INCREMENT,
