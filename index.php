@@ -17,6 +17,8 @@
  <!DOCTYPE html>
  <html lang='en'>
   <head>
+   <meta charset='utf-8'>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />   
    <title><?php echo $settings->title; ?></title>
    
    <!-- font-awesome icons -->
@@ -26,9 +28,9 @@
   <body>
   
    <?php
-    echo $settings->buttons_clients;
+    echo $settings->buttons_playlists;
     echo $settings->html_slash;
-    echo $settings->buttons_contacts;
+    echo $settings->buttons_videos;
     
     echo $settings->html_author;
     echo $settings->html_hr;    
@@ -37,17 +39,18 @@
     $view     = @ $_GET['view'];
     $action   = @ $_GET['action'];
     $actionid = (int) @ $_GET['id'];
- 
+
     switch ($view){
-        case 'contacts':
-          require('views/contacts.php');
+        case 'videos':
+          require('views/videos.php');
           break;
 			
         default:
           // default or when no view is set
-          require('views/clients.php');
+          require('views/playlists.php');
     }
    ?>
-   
+    <script src="https://www.youtube.com/iframe_api" defer></script>   
+    <script src="js/main.js" defer></script>
   </body>
  </html>

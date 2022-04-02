@@ -3,138 +3,138 @@
  * class to hold configuration data for the project
 */
 class settings {
-        public $title          = 'Clients App OOP';     
+        public $title          = 'YouTube Player';     
         public $showPHPerrors  = true;
         
         // database connection
         public $database_host  = 'localhost';
-        public $database_name  = 'clientsapp';
+        public $database_name  = 'youtube';
         public $database_user  = 'root';
         public $database_pwd   = 'Admin.2015!';
 
          // tables
-        public $tables_clients  = 'clients';
-        public $tables_contacts = 'contacts';
-        public $tables_joined   = 'clientscontacts';
+        public $tables_playlists  = 'playlists';
+        public $tables_videos = 'videos';
+        public $tables_joined   = 'playlistsvideos';
 
          // errors
-        public $error_noclients         = "No client(s) found";
-        public $error_nocontacts        = "No contact(s) found";
-        public $error_nolinkedcontacts  = "No contacts found";
-        public $error_nolinkablecontacts= "No contacts found that can be linked to this client.";
-        public $error_duplicatelink     = "The contact specified is already linked to this client.";
+         
+        public $error_noplaylists         = "No playlist(s) found";
+        public $error_novideos        = "No video(s) found";
+        public $error_nolinkedvideos  = "No videos found";
+        public $error_nolinkablevideos= "No videos found that can be linked to this playlist.";
+        public $error_duplicatelink     = "The video specified is already linked to this playlist.";
 
 		// buttons
-        public $buttons_clients    = "<a href='?view=clients'>All Clients</a>";
-        public $buttons_contacts   = "<a href='?view=contacts'>All Contacts</a>";
-        public $buttons_test       = "<a href='?view=test'>Client Code Generation Test</a>";
-        public $buttons_newclient  = "<a href='?view=clients&action=add' class='button'>+ Add new Client</a><BR>";
-        public $buttons_newcontact = "<a href='?view=contacts&action=add' class='button'>+ Add new Contact</a><BR>";
+        public $buttons_playlists    = "<a href='?view=playlists'>My Playlists</a>";
+        public $buttons_videos   = "<a href='?view=videos'>All Videos</a>";
+        public $buttons_test       = "<a href='?view=test'>playlist Code Generation Test</a>";
+        public $buttons_newplaylist  = "<a href='?view=playlists&action=add' class='button'>+ Add new playlist</a><BR>";
+        public $buttons_newvideo = "<a href='?view=videos&action=add' class='button'>+ Add new video</a><BR>";
     		
 		// HTML 
-		public $html_author         = "<small class='float-right'>Create by AJN IT Solutions</small>";   
-		public $html_clients_title  = "<h1 class='align-center'>All Clients</h1>";
-		public $html_contacts_title = "<h1 class='align-center'>All Contacts</h1>";
+		public $html_author         = "<small class='float-right'>by Sengdara</small>";   
+		public $html_playlists_title  = "<h1 class='align-center'>My Playlists</h1>";
+		public $html_videos_title = "<h1 class='align-center'>All YouTube videos</h1>";
         public $html_hr             = '<HR>';
         public $html_slash          = ' / ';
         public $html_p              = '<p></p>';  
-        
+        public $html_hint_autoplay  = '<p>Play one video and the rest will auto-play thereafter</p>';  
+        public $html_searchbox = "<input name='term' style='padding:10px; width: 80vw' maxlength=200 placeholder='Enter something to search the list'>";
+		        
         // actions
-        public $html_actions_clients = "<a href='?view=clients&action=edit&id={clientid}'>Edit</a> 
-						                <a href='#' onclick='return confirmDelete({clientid})'>Delete</a>
-						                <a href='?view=clients&action=linked-contacts&id={clientid}'>Linked Contacts</a>";
+        public $html_actions_playlists = "<a href='?view=playlists&action=edit&id={playlistid}'>Edit</a> /
+						                <a href='#' onclick='return confirmDelete({playlistid})'>Delete</a>";
 
-		public $html_actions_contacts = "<a href='?view=contacts&action=details&id={contactid}'>Details</a>
-										<a href='?view=contacts&action=edit&id={contactid}'>Edit</a> 
-										<a href='#' onclick='return confirmDelete({contactid});'>Delete</a>";
+		public $html_actions_videos = "<a href='?view=videos&action=details&id={videoid}'>Details</a> /
+										<a href='?view=videos&action=edit&id={videoid}'>Edit</a> /
+										<a href='#' onclick='return confirmDelete({videoid});'>Delete</a>";
 												
         // font awesome icons
         public $icons_person = "<span class='fa fa-fw fa-user'></span>";
         public $icons_bank   = "<span class='fa fa-fw fa-bank'></span>";
+        public $icons_list   = "<span class='fa fa-fw fa-list'></span>";
+        public $icons_play   = "<span class='fa fa-fw fa-play'></span>";
         public $icons_link   = "<span class='fa fa-fw fa-link'></span>";
         public $icons_unlink = "<span class='fa fa-fw fa-unlink'></span>";
+        public $icons_video  = "<span class='fa fa-fw fa-video'></span>";
 
 		// SQL
-        public $sql_getclients  = "SELECT client_id, 
-        								  name AS `Name`, 
-        								  client_code AS `Client Code`, 
-		                       			(SELECT 
-		                       					COUNT(ccid) 
-		                       			 FROM 
-					                     	  clientscontacts cc 
-		        			             WHERE 
-		        			             	  cc.client_id=c.client_id
-		        			             ) AS `No. of linked contacts` 
-				                    FROM 
-				                       		`clients` c 
-				                    ORDER BY 
-				                       		c.name 
-				                    ASC;";
-                            
-        public $sql_getcontacts = "SELECT 
-        								contact_id, 
-        	                            CONCAT(c.surname, ' ', c.name) AS `Full Name`, 
-			         					email_address As `E-mail`,
-			                           (SELECT 
-			                           		COUNT(ccid) 
-			                           	FROM 
-				                           clientscontacts cc 
-                				        WHERE 
-                				        	cc.contact_id=c.contact_id
-                				        ) AS `No. of linked clients`
-                           			FROM 
-                           				`contacts` c 
-                           			ORDER BY 
-                           				`Full Name` 
-                           			ASC;";
+        public $sql_getplaylists  = "SELECT 
+										playlist_id,
+										title AS `Name`,
+										(SELECT 
+												COUNT(psid)
+											FROM
+												playlistsvideos cc
+											WHERE
+												cc.playlist_id = c.playlist_id) AS `Videos`
+									FROM
+										`playlists` c
+									ORDER BY c.title ASC;";
+																
+        public $sql_getvideos = "SELECT 
+										video_id,
+										title AS `Title`,
+										url,
+										(SELECT 
+												COUNT(psid)
+											FROM
+												playlistsvideos cc
+											WHERE
+												cc.video_id = c.video_id) AS `Playlists`
+									FROM
+										`videos` c
+									ORDER BY `title` ASC;";
 		
-		public $sql_getcontactsnotlinkedtoclient = "SELECT 
-														contact_id, 
-														CONCAT(surname, ' ', name) AS `Full Name` 
+		public $sql_getvideosnotlinkedtoplaylist = "SELECT 
+														video_id, 
+														title AS `Title` 
 													FROM 
-														`contacts` c 
+														`videos` c 
                 									WHERE 
-                										c.contact_id NOT IN 
+                										c.video_id NOT IN 
                                                         (SELECT 
-                                                                contact_id 
+                                                                video_id 
                                                             FROM 
-                                                                clientscontacts cc 
+                                                                playlistsvideos cc 
                                                             WHERE 
-                                                                cc.client_id={clientid}
+                                                                cc.playlist_id={playlistid}
                                                         ) 
                 									ORDER BY 
-                										`Full Name` 
+                										`Title` 
                 									ASC;";
                 									
-        public $sql_findlinkbetweenclientcontact = "SELECT 
+        public $sql_findlinkbetweenplaylistvideo = "SELECT 
                                                            * 
                                                     FROM 
                                                           `{table}` 
         											WHERE 
-        											      client_id={clientid} 
+        											      playlist_id={playlistid} 
         											AND 
-        											      contact_id={contactid};";
+        											      video_id={videoid};";
         											
-        public $sql_getcontactsforclient = "SELECT 
-                                            	ccid, 
-                                            	concat(c.surname,' ', c.name) as `Full Name`, 
-                                            	`email_address` AS `E-mail`
+        public $sql_getvideosforplaylist = "SELECT 
+                                            	psid, 
+                                            	c.video_id,
+                                            	title AS `Title`,
+                                            	url
 											FROM 
-											     contacts c, 
-											     clientscontacts cc 
+											     videos c, 
+											     playlistsvideos cc 
 											WHERE 
-											     cc.client_id={clientid} 
+											     cc.playlist_id={playlistid} 
 											AND 
-											     cc.contact_id = c.contact_id;";       
+											     cc.video_id = c.video_id;";       
 												 
-		public $sql_getclientsforcontact = "SELECT 
-												 c.client_id, 
-												 c.name As `Client Name`
+		public $sql_getplaylistsforvideo = "SELECT 
+												 c.playlist_id, 
+												 c.title As `Title`
 											 FROM 
-												  clients c, 
-												  clientscontacts cc 
+												  playlists c, 
+												  playlistsvideos cc 
 											 WHERE 
-												  cc.client_id=c.client_id
+												  cc.playlist_id=c.playlist_id
 											 AND 
-												  cc.contact_id = {contactid};";       												 
+												  cc.video_id = {videoid};";       												 
  }

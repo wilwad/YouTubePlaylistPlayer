@@ -7,7 +7,9 @@
 * Date:     14 February 2022
 */
  class CForm extends CRUD {
- 
+    public function getTableMetadata($table){
+        return parent::getTableMetadata($table);
+    }
     public function generateForm($table, $col='', $id=0, $ignored = []){
         $sql = "SHOW FULL COLUMNS FROM `$table`;";
         $this->db->query($sql) or die($this->db->error);

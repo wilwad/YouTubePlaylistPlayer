@@ -239,6 +239,8 @@ class CRUD {
             return $this->makeResult (true, '', ['affectedrows'=>$affectedrows]);
    }
    
+   // Utilities:
+   //
    // select id, name FROM genders
    // returns id-value pair - good for html selection, option box
    // table must have 'id' column
@@ -279,8 +281,8 @@ class CRUD {
                 $type    = $row['Type'];
                 $collation = $row['Collation'];
                 $null    = $row['Null'];
-                $key     = $row['key'];
-                $default = $row['default'];
+                $key     = @$row['key'];
+                $default = @$row['default'];
                 $comment = $row['Comment'];
 
                 $data[$field] = [
@@ -303,6 +305,11 @@ class CRUD {
    //             data   --  key/value pair
    static function makeResult($result, $error='', $data=[], $sql = ''){
         return ['ok'=>$result, 'error'=>$error, 'data'=>$data, 'sql'=>$sql];
+   }
+   
+   // numbers from string
+   function numbersFromString( $string ){
+        return (int)filter_var($string, FILTER_SANITIZE_NUMBER_INT);
    }
    
    function __destruct(){
