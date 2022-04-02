@@ -1,4 +1,4 @@
-# youtubeplaylist
+# A YouTube video playlist player
 
 PHP YouTube videos playlist player. 
 Uses the YouTube Iframe API. Only the title and URL of a video are saved.
