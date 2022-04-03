@@ -9,8 +9,8 @@ class settings {
         // database connection
         public $database_host  = 'localhost';
         public $database_name  = 'youtube';
-        public $database_user  = 'root';
-        public $database_pwd   = 'Admin.2015!';
+        public $database_user  = '';
+        public $database_pwd   = '';
 
          // tables
         public $tables_playlists  = 'playlists';
